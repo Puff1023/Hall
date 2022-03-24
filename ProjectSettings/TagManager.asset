@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - wall
+  - thing
+  - Ground
+  - GodDoor
+  - PickUp
+  - Qte
+  - QteRing
+  - ha
+  - Wood
+  - WoodTrigger
+  - Prey
+  - Spell
+  - Monster
+  - MouseMove
+  - MouseMoveCheck
+  - Shoses
+  - Rule1
+  - elev button
+  - OpQte
+  - CloQte
+  - elev_out_button
+  - elev_in_button
+  - ExitDoor
+  - CeilingLight
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Ground
+  - Water
+  - UI
+  - MiniMap
+  - Monster
+  - Scene
+  - Pickup
+  - Icon
+  - GodDoor
+  - QTE_Point
+  - Ceilling
+  - Post
+  - Post2
+  - Bwol
+  - Level3Vidio
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 54592209
+    locked: 0
+  - name: QTE
+    uniqueID: 2887604093
+    locked: 0
