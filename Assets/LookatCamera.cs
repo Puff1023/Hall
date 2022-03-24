@@ -11,7 +11,7 @@ public class LookatCamera : MonoBehaviour
     [Tooltip("可以自由選擇要固定的軸心")]
     public SelectXYZ selectXYZ = SelectXYZ.None;
 
-    public Transform MainCamera;
+    public Transform MainCamera; //你好
     public float maxDistance;
     public bool CamLookAt;
 
