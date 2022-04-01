@@ -29,9 +29,9 @@ public class NewQTE : MonoBehaviour
     public bool Burning;
     public bool BowlBroken;
     public bool PlayQTE;
-    Vector3 NewBwolPos = new Vector3(42.8f, 2.3f, -19.5f);
-    Vector3 OrigSpellPos = new Vector3(42.3f, 1.73f, -19.7f);
-    Vector3 OrigPlayerPos = new Vector3(44, 0.5f, -19.54f);
+    Vector3 NewBwolPos = new Vector3(17.8f, 2.73f, 72.2f);
+    Vector3 OrigSpellPos = new Vector3(17.6f, 1.6f, 72.8f);
+    Vector3 OrigPlayerPos = new Vector3(18, 0, 71);
     private void Awake()
     {
         ins = this;
@@ -110,7 +110,9 @@ public class NewQTE : MonoBehaviour
             Cursor.visible = false;
             SpellWater.position = new Vector3(0, 0, 0);
             GodTable.tag = "CloQte";
-            Bwol.position = Vector3.Lerp(Bwol.position, NewBwolPos, 0.1f);
+            Player.transform.rotation = Quaternion.Lerp(Player.transform.rotation, Quaternion.Euler(20, 0, 0), 0.03f);
+            //Player.transform.rotation = Quaternion.Euler(20, 0, 0);
+            Bwol.position = Vector3.Lerp(Bwol.position, NewBwolPos, 0.05f);
             Spell.position = Vector3.Lerp(Spell.position, OrigSpellPos, 0.1f);
             BowlBroken = true;
             Invoke("QTEfail", 2);
@@ -195,8 +197,8 @@ public class NewQTE : MonoBehaviour
     {
         Quasi_Heart.color = Color.white;
         Player.transform.position = OrigPlayerPos;
-        Player.transform.rotation = Quaternion.Euler(0, 0, 0);
-        CmCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
+        Player.transform.rotation = Quaternion.Euler(0, 90, 0);
+        //CmCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
         MusicManager.ins.DoorEffect_player.clip = MusicManager.ins.DoorEffect_clip[0];
         MusicManager.ins.DoorEffect_player.Play();
         PlayerMovement.ins.speed = 5;

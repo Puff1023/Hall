@@ -177,13 +177,16 @@ public class Ray_Pick : MonoBehaviour
                 {
                     Bar.fillAmount -= 0.5f * Time.deltaTime;
                     BarRing.SetActive(true);
+                    PlayerMovement.ins.speed = 2;
+                    hit.transform.gameObject.GetComponent<BoxCollider>().isTrigger = false;
                     if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
-                        Bar.fillAmount += 0.1f;
+                        Bar.fillAmount += 0.3f;
                         MusicManager.ins.WoodKnock_player.clip = MusicManager.ins.Wood_clip[0];
                         MusicManager.ins.WoodKnock_player.Play();
                         if (Bar.fillAmount >= 1)
                         {
+                            PlayerMovement.ins.speed += 3;
                             WoodTrigger.SetBool("WoodTrigger", true);
                             hit.transform.gameObject.GetComponent<Animator>().enabled = true;
                             hit.transform.gameObject.GetComponent<BoxCollider>().isTrigger = true;
@@ -211,7 +214,6 @@ public class Ray_Pick : MonoBehaviour
                 MouseLookScript.GetComponent<MouseLook>().enabled = false;
                 MouseBarPlus = true;
                 PlayerMovement.ins.speed = 0;
-                //player.GetComponent<PlayerMovement>().enabled = false;
                 Debug.Log("1254845");
             }
         }

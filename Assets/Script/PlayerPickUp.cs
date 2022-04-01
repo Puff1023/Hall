@@ -20,8 +20,8 @@ public class PlayerPickUp : MonoBehaviour
     public Transform CmCamera;
     Vector3 newRule1Pos = new Vector3(7.5f, 2.16f, 7.95f);
     Vector3 originalRulePos = new Vector3(7f, 2.16f, 7.95f);
-    Vector3 newPlayerPos = new Vector3(44, 1, -19.54f);
-    Vector3 newMonster1Pos = new Vector3(44.6f, 0.5f, -12.7f);
+    Vector3 newPlayerPos = new Vector3(17.8f, 0.8f, 70.5f);
+    Vector3 newMonster1Pos = new Vector3(29.4f, 0.1f, 66.6f);
     private void Awake()
     {
         ins = this;
@@ -68,9 +68,10 @@ public class PlayerPickUp : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             Quasi_Heart.color = Color.clear;
-            CmCamera.transform.rotation = Quaternion.Euler(20, -90, 0);
+            CmCamera.transform.rotation = Quaternion.Euler(30, 0, 0);
+            Monster1.position = newMonster1Pos;
             transform.position = Vector3.Lerp(transform.position, newPlayerPos, 0.1f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(20, -90, 0), 0.05f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(30, 0, 0), 0.05f);
         }
     }
 
@@ -92,7 +93,7 @@ public class PlayerPickUp : MonoBehaviour
         if (other.tag == "OpQte")
         {
             OpQte = true;
-            Monster1.position = newMonster1Pos;
+            
             NavMesh_Component.ins.agent.speed = 0;
             MusicManager.ins.KnockDoor_player.clip = MusicManager.ins.KnockDoor_clip[0];
             MusicManager.ins.KnockDoor_player.Play();//°­ºVªù
@@ -101,7 +102,7 @@ public class PlayerPickUp : MonoBehaviour
         if (other.tag == "Shoses")//debuff¶}(«B¾c)
         {
             other.gameObject.SetActive(false);
-            PlayerMovement.ins.speed -= 4;
+            PlayerMovement.ins.speed -= 3;
             MusicManager.ins.RainShoses_player.clip = MusicManager.ins.RainShoses_clip[0];
             MusicManager.ins.RainShoses_player.Play();
             MusicManager.ins.BGM_player.clip = MusicManager.ins.BGM_clip[0];
@@ -126,6 +127,6 @@ public class PlayerPickUp : MonoBehaviour
         MusicManager.ins.RainShoses_player.Pause();
         MusicManager.ins.BGM_player.clip = MusicManager.ins.BGM_clip[0];
         MusicManager.ins.BGM_player.Play();
-        PlayerMovement.ins.speed += 4;
+        PlayerMovement.ins.speed += 3;
     }
 }

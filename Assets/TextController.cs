@@ -79,7 +79,7 @@ public class TextController : MonoBehaviour
         timer = 0;
         currentPos = 0;
         myText.text = words;
-        PlayerMovement.ins.speed = 4;
+        PlayerMovement.ins.speed = 5;
         Qh.color = Color.white;
     }
 }

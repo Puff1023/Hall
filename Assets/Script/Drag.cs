@@ -17,7 +17,7 @@ public class Drag : MonoBehaviour
         if (DragDown==true)
         {
             Vector3 mouse = Input.mousePosition;
-            mouse.z = 0.8f;
+            mouse.z = 1.3f;
             prePos = Camera.main.ScreenToWorldPoint(mouse);
             gameObject.tag = "Spell";
         }
@@ -28,7 +28,7 @@ public class Drag : MonoBehaviour
         if (DragUp==true)
         {
             Vector3 mouse = Input.mousePosition;
-            mouse.z = 0.8f;
+            mouse.z = 1.3f;
             Vector3 newPos = Camera.main.ScreenToWorldPoint(mouse);
             Vector3 offset = newPos - prePos;
             transform.position = newPos;

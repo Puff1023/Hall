@@ -14,7 +14,7 @@ public class ParticleSystemStopped : MonoBehaviour
     public Transform Player;
     public Transform CmCamera;
     public NewQTE QteScript;
-    public Light ElvaLight;
+    //public Light ElvaLight;
     public void OnParticleSystemStopped()
     {
         QteScript.enabled = false;
@@ -44,9 +44,9 @@ public class ParticleSystemStopped : MonoBehaviour
         PlayerMovement.ins.speed = 5;
         MouseLook.ins.MouseMoving = true;
         Quasi_Heart.color = Color.white;
-        Player.position = new Vector3(44, 0.5f, -19.54f);
-        Player.rotation = Quaternion.Euler(0, -90, 0);
-        CmCamera.transform.rotation = Quaternion.Euler(0, -90, 0);
+        Player.position = new Vector3(18, 0, 71);
+        Player.rotation = Quaternion.Euler(0, 0, 0);
+        //CmCamera.transform.rotation = Quaternion.Euler(0, -90, 0);
         BowlAni.enabled = false;
         WaterAni.enabled = false;
         Ray_Pick.ins.ElvaOp = true;//允許使用電梯
@@ -54,7 +54,7 @@ public class ParticleSystemStopped : MonoBehaviour
         MusicManager.ins.ElvaLight_player.Play();
         MusicManager.ins.KnockDoor_player.clip = MusicManager.ins.KnockDoor_clip[0];
         MusicManager.ins.KnockDoor_player.Pause();
-        ElvaLight.intensity = 3;
+        //ElvaLight.intensity = 3;
         Debug.Log("Exit");
     }
 }

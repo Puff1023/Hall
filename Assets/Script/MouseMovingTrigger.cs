@@ -25,7 +25,7 @@ public class MouseMovingTrigger : MonoBehaviour
             if (NewQTE.ins.Fail==false)
             {
                 StartCoroutine("GoBack");
-                original.position = new Vector3(10, 0.5f, 8);
+                original.position = new Vector3(-30.8f, 0, -36);
             }
         }
     }
