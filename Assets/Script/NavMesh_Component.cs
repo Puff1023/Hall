@@ -8,7 +8,6 @@ public class NavMesh_Component : MonoBehaviour
     public static NavMesh_Component ins;
     public NavMeshAgent agent;
     public static NavMesh_Component nav;
-    public BoxCollider Monster1;
     public Transform RestartPoint;
     public Transform RestartPoint2;
     public Transform RestartPoint3;
