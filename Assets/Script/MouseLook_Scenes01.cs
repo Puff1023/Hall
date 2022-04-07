@@ -9,7 +9,7 @@ public class MouseLook_Scenes01 : MonoBehaviour
     public Transform playerBody;
     float xRotation = 0f;
 
-    public bool MouseMoving;
+    public bool MouseMoving=true;
     private void Awake()
     {
         ins = this;
@@ -20,8 +20,8 @@ public class MouseLook_Scenes01 : MonoBehaviour
         if (MouseMoving==true)
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-            xRotation -= mouseY;
+            //float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+           // xRotation -= mouseY;
 
             xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
