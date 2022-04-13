@@ -28,6 +28,7 @@ TagManager:
   - elev_in_button
   - ExitDoor
   - CeilingLight
+  - VillaDoor
   layers:
   - Default
   - TransparentFX
