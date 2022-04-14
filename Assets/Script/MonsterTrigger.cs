@@ -5,60 +5,79 @@ using UnityEngine;
 public class MonsterTrigger : MonoBehaviour
 {
     public Material MonsterMat;
-    public Color MonsterMatA;
-    /*public Color MonsterHandMat;
-   public Color MonsterFootsMat;
-   public Color MonsterClothMat;
-   public Color MonsterHeadMat;*/
-    public float TempTime;
     public float count = 0;
+    public float fadeSpeed = 3f;
+    public Transform[] Point;
+    public GameObject Player;
     bool FadeOut = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        TempTime = 0;
-        MonsterMat = Resources.Load("NewMonster/NewMonsterMaterial_Scenes01") as Material;
-        MonsterMat = GetComponent<Renderer>().material;
-        MonsterMat.color = GetComponent<Renderer>().material.color;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (TempTime<1)
-        {
-            TempTime += Time.deltaTime; 
-        }
-
         if (FadeOut)
         {
-            if (MonsterMat.color.a>=1)
-            {
-                //MonsterMat.color.a -= TempTime / 5 * Time.deltaTime;
-            }
-            
+            MonsterMat.color = Color.Lerp(MonsterMat.color, Color.clear, Time.deltaTime * fadeSpeed * 0.5f);
         }
 
+        if (!FadeOut)
+        {
+            MonsterMat.color = Color.white;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag=="Player")
         {
-            count++;
+            PlayerMovement_Scenes01.ins.speed = 0;
             FadeOut = true;
+            TriggerCount();
             Debug.Log("碰到了");
+        }
+
+        if (other.tag=="Point")
+        {
+            other.tag = "NotPoint";
+            FadeOut = false;
         }
     }
 
-    /*void TriggerCount()
+    void TriggerCount()
     {
-        if (count >= 5)
+        if (MonsterMat.color.a <= 0.1f)
         {
-            if (MonsterMat.a==0)
-            {
-                gameObject.transform.position = new Vector3(-40, 0, 30);
-            }
+            Debug.Log("消失");
+            MonsterMat.color = Color.clear;
+            count++;
+            PlayerMovement_Scenes01.ins.speed = 2;
         }
-    }*/
+
+        if (count==1)
+        {
+            gameObject.transform.position = Point[0].position;
+            gameObject.transform.rotation = Quaternion.Euler(0, -6.8f, 0);
+        }
+
+        if (count == 2)
+        {
+            gameObject.transform.position = Point[1].position;
+            gameObject.transform.rotation = Quaternion.Euler(0, 40, 0);
+        }
+
+        if (count == 3)
+        {
+            gameObject.transform.position = Point[2].position;
+            gameObject.transform.rotation = Quaternion.Euler(2.57f, -106, 0);
+        }
+
+        if (count >= 4)
+        {
+            gameObject.transform.position = Point[3].position;
+            gameObject.transform.rotation = Quaternion.Euler(2, -166, 0);
+        }
+
+        if (count>=5)
+        {
+            Player.tag = "NotPlayer";
+        }
+    }
 }
