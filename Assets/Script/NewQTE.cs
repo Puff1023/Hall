@@ -119,7 +119,7 @@ public class NewQTE : MonoBehaviour
         }
         if (GodTable.tag=="CloQte")
         {
-            PlayerPickUp.ins.OpQte = false;
+            PlayerPickUp_Game1.ins.OpQte = false;
             Point.color = Color.clear;
             QtePoint[0].color = Color.clear;
             QtePoint[1].color = Color.clear;

@@ -23,7 +23,7 @@ public class AniCheck : MonoBehaviour
             {
                 Debug.Log("дькOп}");
                 NavMesh_Component.ins.agent.speed = 4;
-                PlayerOriginal.position = new Vector3(-30.8f, 0, -36);
+                PlayerOriginal.position = new Vector3(-38.4f, 0, -42);
                 CheckAni = false;
             }
             else
