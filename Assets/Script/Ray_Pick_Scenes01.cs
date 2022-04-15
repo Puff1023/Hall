@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class Ray_Pick_Scenes01 : MonoBehaviour
 {
     public static Ray_Pick_Scenes01 ins;
@@ -12,6 +13,11 @@ public class Ray_Pick_Scenes01 : MonoBehaviour
 
     public Transform RightDoor;
     public Transform LeftDoor;
+    public Outline Right;
+    public Outline Left;
+    public GameObject UI;
+    public Image Black;
+    public float fadeSpeed;
     public float Speed = 1;
     private void Awake()
     {
@@ -32,12 +38,32 @@ public class Ray_Pick_Scenes01 : MonoBehaviour
 
             if (hit.transform.tag=="VillaDoor")
             {
-                
+                UI.SetActive(true);
+                Right.OutlineWidth = 6;
+                Left.OutlineWidth = 6;
                 if (Input.GetKey(KeyCode.Mouse0))
                 {
-                    Debug.Log("OpenDoor");
-                    RightDoor.rotation = Quaternion.Lerp(RightDoor.rotation, Quaternion.Euler(0, -80, 0), 0.01f);
-                    LeftDoor.rotation = Quaternion.Lerp(LeftDoor.rotation, Quaternion.Euler(0, 80, 0), 0.01f);
+                    //Debug.Log("OpenDoor");
+                    //print("y角度為：" + RightDoor.transform.localEulerAngles.y);
+                    RightDoor.rotation = Quaternion.Lerp(RightDoor.rotation, Quaternion.Euler(0, -70, 0), 0.01f);
+                    LeftDoor.rotation = Quaternion.Lerp(LeftDoor.rotation, Quaternion.Euler(0, 70, 0), 0.01f);
+                }
+            }
+            else
+            {
+                UI.SetActive(false);
+                Right.OutlineWidth = 0;
+                Left.OutlineWidth = 0;
+            }
+
+            if (RightDoor.localEulerAngles.y >= 50)//轉場道關卡1
+            {
+                hit.transform.tag = "NotVilla";
+                Black.color = Color.Lerp(Black.color, Color.black, Time.deltaTime * fadeSpeed * 0.5f);
+                
+                if (Black.color.a>=0.95f)
+                {
+                    SceneManager.LoadScene(2);//關卡1
                 }
             }
         }    

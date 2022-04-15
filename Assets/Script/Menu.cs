@@ -34,7 +34,7 @@ public class Menu : MonoBehaviour
     public void StartGame()
     {
         loadingImage.SetActive(true);
-        StartCoroutine(LoadLevelWithBar("GameScene"));
+        StartCoroutine(LoadLevelWithBar("Scene 01"));
     }
 
     IEnumerator LoadLevelWithBar(string level)
@@ -42,7 +42,7 @@ public class Menu : MonoBehaviour
         int displayProgress = 0;
         int toProgress = 0;
 
-        AsyncOperation async = SceneManager.LoadSceneAsync("GameScene");
+        AsyncOperation async = SceneManager.LoadSceneAsync("Scene 01");
         async.allowSceneActivation = false;
         while (async.progress < 0.9f)
         {
