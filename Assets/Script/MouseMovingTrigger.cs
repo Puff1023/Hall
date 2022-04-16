@@ -26,6 +26,8 @@ public class MouseMovingTrigger : MonoBehaviour
             {
                 StartCoroutine("GoBack");
                 original.position = new Vector3(-30.8f, 0, -36);
+                PlayerMovement.ins.speed = 0;
+                MouseLook.ins.MouseMoving = false;
             }
         }
     }

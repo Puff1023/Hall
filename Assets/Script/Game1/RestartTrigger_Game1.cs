@@ -16,6 +16,7 @@ public class RestartTrigger_Game1 : MonoBehaviour
     {
         if(other.tag=="Player")
         {
+            
             Entrance.position = new Vector3(-110, 0, -22);
             GodDoor.SetBool("OpenDoor", false);
             GodDoor.SetBool("CloDoor", true);
@@ -24,7 +25,7 @@ public class RestartTrigger_Game1 : MonoBehaviour
             Spell.position = new Vector3(17.6f, 1.6f, 72.8f);
             Spell.tag = "Qte";
             Trigger.enabled = true;
-            NewQTE.ins.Fail = false; //нnзя
+            NewQTE_Game1.ins.Fail = false; 
             Drag.ins.DragDown = true;
             Drag.ins.DragUp = true;
             LookCheck.SetActive(true);
@@ -37,6 +38,8 @@ public class RestartTrigger_Game1 : MonoBehaviour
     {
         if (other.tag=="Player")
         {
+            PlayerMovement.ins.speed = 5;
+            MouseLook.ins.MouseMoving = true;
             NavMesh_Component.ins.agent.speed = 0;
         }
     }

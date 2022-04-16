@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AniCheck : MonoBehaviour
+public class AniCheck: MonoBehaviour
 {
     public Animator Wood;
     public Transform PlayerOriginal;
@@ -23,7 +23,7 @@ public class AniCheck : MonoBehaviour
             {
                 Debug.Log("дькOп}");
                 NavMesh_Component.ins.agent.speed = 4;
-                PlayerOriginal.position = new Vector3(-38.4f, 0, -42);
+                PlayerOriginal.position = new Vector3(-30.8f, 0, -36);
                 CheckAni = false;
             }
             else

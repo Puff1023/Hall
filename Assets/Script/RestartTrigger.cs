@@ -37,6 +37,8 @@ public class RestartTrigger : MonoBehaviour
     {
         if (other.tag=="Player")
         {
+            PlayerMovement.ins.speed = 5;
+            MouseLook.ins.MouseMoving = true;
             NavMesh_Component.ins.agent.speed = 0;
         }
     }

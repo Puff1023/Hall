@@ -31,7 +31,7 @@ public class NewQTE : MonoBehaviour
     public bool PlayQTE;
     Vector3 NewBwolPos = new Vector3(17.8f, 2.73f, 72.2f);
     Vector3 OrigSpellPos = new Vector3(17.6f, 1.6f, 72.8f);
-    Vector3 OrigPlayerPos = new Vector3(18, 0, 71);
+    Vector3 OrigPlayerPos = new Vector3(18, 0, 66.5f);
     private void Awake()
     {
         ins = this;
@@ -119,7 +119,7 @@ public class NewQTE : MonoBehaviour
         }
         if (GodTable.tag=="CloQte")
         {
-            PlayerPickUp_Game1.ins.OpQte = false;
+            PlayerPickUp.ins.OpQte = false;
             Point.color = Color.clear;
             QtePoint[0].color = Color.clear;
             QtePoint[1].color = Color.clear;
@@ -198,7 +198,6 @@ public class NewQTE : MonoBehaviour
         Quasi_Heart.color = Color.white;
         Player.transform.position = OrigPlayerPos;
         Player.transform.rotation = Quaternion.Euler(0, 90, 0);
-        //CmCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
         MusicManager.ins.DoorEffect_player.clip = MusicManager.ins.DoorEffect_clip[0];
         MusicManager.ins.DoorEffect_player.Play();
         PlayerMovement.ins.speed = 5;

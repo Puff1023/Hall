@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 183ef8f6ca8e06f44a235cff6916706e, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: eef0ffad79066f14db1cb18e4dfa3cee, type: 2}
 --- !u!1001 &9717699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1147,7 +1147,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 163266124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64e5fdffe575e52488ed83517b81d542, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cda560450c9a4042940254152050ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Entrance: {fileID: 1389271488}
@@ -3391,6 +3391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 439254039}
   speed: 0
+  gravity: -9.81
 --- !u!1 &452828700
 GameObject:
   m_ObjectHideFlags: 0
@@ -6985,7 +6986,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
@@ -8369,7 +8370,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1112863916}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd748399fe091f64e884cd05fa774097, type: 3}
+  m_Script: {fileID: 11500000, guid: c5690ce9073bcbd47b995c54f9f9d45e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 100
@@ -10438,18 +10439,22 @@ PrefabInstance:
     - target: {fileID: 570584494946246227, guid: 9c9fdeb210a7ede40981e58327db39a3, type: 3}
       propertyPath: QteScript
       value: 
-      objectReference: {fileID: 1395559636}
+      objectReference: {fileID: 0}
     - target: {fileID: 570584494946246227, guid: 9c9fdeb210a7ede40981e58327db39a3, type: 3}
       propertyPath: Quasi_Heart
       value: 
       objectReference: {fileID: 1840351840}
+    - target: {fileID: 570584496060766734, guid: 9c9fdeb210a7ede40981e58327db39a3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 570584496060766734, guid: 9c9fdeb210a7ede40981e58327db39a3, type: 3}
       propertyPath: PlayerOriginal
       value: 
       objectReference: {fileID: 163266128}
     - target: {fileID: 570584496158115705, guid: 9c9fdeb210a7ede40981e58327db39a3, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1373006146142752769, guid: 9c9fdeb210a7ede40981e58327db39a3, type: 3}
       propertyPath: m_RootOrder
@@ -10494,6 +10499,10 @@ PrefabInstance:
     - target: {fileID: 1373006146142752769, guid: 9c9fdeb210a7ede40981e58327db39a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809829307324108399, guid: 9c9fdeb210a7ede40981e58327db39a3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5398515019491557816, guid: 9c9fdeb210a7ede40981e58327db39a3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10840,7 +10849,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1395559632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 638239918a1c503478afc85bc06e447d, type: 3}
+  m_Script: {fileID: 11500000, guid: bd9c07dd6645aff4aa75a920a5ef36d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Trigger: {fileID: 1781484687}
@@ -11296,7 +11305,7 @@ MonoBehaviour:
   Quasi_Heart: {fileID: 1840351840}
   Player: {fileID: 543450653460714448}
   CmCamera: {fileID: 1505326566}
-  QteScript: {fileID: 1395559636}
+  QteScript: {fileID: 0}
 --- !u!1 &1452237391 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2549101277516255906, guid: 0212cf093a628b141959caf68413ee5e, type: 3}
@@ -16136,7 +16145,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
@@ -43508,7 +43517,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
@@ -43522,7 +43531,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 5
-  m_Speed: 0
+  m_Speed: 4
   m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 500
