@@ -19,7 +19,6 @@ public class MusicManager : MonoBehaviour
     public AudioSource oillight_player;//吃油燈
     public AudioSource Heart_player;//心跳聲
     public AudioSource QteTimer_player;//QTE倒數
-    //以下是新的
     public AudioSource ElvaLight_player;//啟用電梯的燈
     public AudioSource RainShoses_player;//吃雨鞋
     public AudioSource Burning_player;//符咒燃燒
@@ -30,6 +29,8 @@ public class MusicManager : MonoBehaviour
     public AudioSource QTE_player;//qte出現
     public AudioSource QteScesse_player;//qte成功
     public AudioSource QteFail_player;//qte失敗
+    //以下是新的
+    public AudioSource LampBreak_player;//吊燈破
 
 
     [Tooltip("音檔陣列")]
@@ -49,7 +50,7 @@ public class MusicManager : MonoBehaviour
     public AudioClip[] BwolBroken_clip;
     public AudioClip[] Wood_clip;
     public AudioClip[] QTE_clip;
-
+    public AudioClip[] LampBreak_clip;
 
 
     bool FootStepIsPlaying=false;

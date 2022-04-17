@@ -32,6 +32,7 @@ public class NavMesh_Component : MonoBehaviour
     private void FixedUpdate()
     {
         agent.SetDestination(player.transform.position);
+        agent.nextPosition = transform.position;//Nav跟隨怪物
     }
 
     private void OnCollisionEnter(Collision col)

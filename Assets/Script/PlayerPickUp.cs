@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class PlayerPickUp : MonoBehaviour
 {
@@ -11,17 +12,18 @@ public class PlayerPickUp : MonoBehaviour
     public GameObject Rule1;
     public GameObject Rule2;
     public GameObject Rule3;
-    public Transform Monster1;
+    public NavMeshAgent Monster1Nav;
     public Image Quasi_Heart;
     public Image MiniMap;
     public float Speed;
     public bool Rule11;
     public bool OpQte;
     public Transform CmCamera;
+    public Transform PlayerOpenQtPos;
+    public Transform Monster01DoorPos;
+    public Vector3 NewMonster1NavPos;
     Vector3 newRule1Pos = new Vector3(7.5f, 2.16f, 7.95f);
     Vector3 originalRulePos = new Vector3(7f, 2.16f, 7.95f);
-    Vector3 newPlayerPos = new Vector3(17.8f, 0.8f, 70.5f);
-    Vector3 newMonster1Pos = new Vector3(29.4f, 0.1f, 66.6f);
     private void Awake()
     {
         ins = this;
@@ -56,24 +58,25 @@ public class PlayerPickUp : MonoBehaviour
         {
             Rule1.transform.position = Vector3.Lerp(Rule1.transform.position, newRule1Pos, 0.1f);
             PlayerMovement.ins.speed = 0;
-            //CmCamera.SetActive(false);
             LookatCamera.ins.CamLookAt = true;
-            Invoke("qqq", 10);
+            Invoke("qqq", 3);
         }
 
         if (OpQte)
         {
-            PlayerMovement.ins.speed = 0;
-            MouseLook.ins.MouseMoving = false;
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             Quasi_Heart.color = Color.clear;
             CmCamera.transform.rotation = Quaternion.Euler(30, 0, 0);
-            Monster1.position = newMonster1Pos;
-            transform.position = Vector3.Lerp(transform.position, newPlayerPos, 0.1f);
+            Monster1Nav.Warp(NewMonster1NavPos); 
+            transform.position = Vector3.Lerp(transform.position, PlayerOpenQtPos.position, 0.1f);
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(30, 0, 0), 0.05f);
+            PlayerMovement.ins.speed = 0;
+            MouseLook.ins.MouseMoving = false;
+            NavMesh_Component.ins.agent.speed = 0;
         }
     }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -92,11 +95,11 @@ public class PlayerPickUp : MonoBehaviour
 
         if (other.tag == "OpQte")
         {
+            Debug.Log("¸I¨ì");
             OpQte = true;
-            
-            NavMesh_Component.ins.agent.speed = 0;
             MusicManager.ins.KnockDoor_player.clip = MusicManager.ins.KnockDoor_clip[0];
             MusicManager.ins.KnockDoor_player.Play();//°­ºVªù
+
         }
 
         if (other.tag == "Shoses")//debuff¶}(«B¾c)

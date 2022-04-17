@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
 
     public float speed;      //移動速度
-    public float gravity = -9.81f; //重力
+    //public float gravity = -9.81f; //重力
     //public float jumpHeight = 3f;  //跳的高度
 
     //public Transform groundCheck;
@@ -82,8 +82,8 @@ public class PlayerMovement : MonoBehaviour
        //     //Music_manager.ins.StopFootStep();
        // }
        
-        velocity.y += gravity * Time.deltaTime; //重力
+        //velocity.y += gravity * Time.deltaTime; //重力
 
-        controller.Move(velocity *Time.deltaTime);
+        //controller.Move(velocity *Time.deltaTime);
     }
 }

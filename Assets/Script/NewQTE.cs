@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class NewQTE : MonoBehaviour
 {
@@ -26,12 +27,15 @@ public class NewQTE : MonoBehaviour
     public Animator SpellBurning;
     public Transform Bwol;
     public Transform Spell;
+    public Transform Monster1;
+    public Transform Monster01DoorPos;
     public bool Burning;
     public bool BowlBroken;
     public bool PlayQTE;
     Vector3 NewBwolPos = new Vector3(17.8f, 2.73f, 72.2f);
     Vector3 OrigSpellPos = new Vector3(17.6f, 1.6f, 72.8f);
     Vector3 OrigPlayerPos = new Vector3(18, 0, 66.5f);
+    public GameObject Monster1Nav;
     private void Awake()
     {
         ins = this;
@@ -40,10 +44,10 @@ public class NewQTE : MonoBehaviour
     {
         if (PlayQTE)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            /*if (Input.GetKeyDown(KeyCode.Space))
             {
                 PointCount++;
-            }
+            }*/
             if (PointCount <= 0)
             {
                 QtePoint[0].color = Color.grey;
@@ -93,6 +97,7 @@ public class NewQTE : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             GodTable.tag = "CloQte";
+            PlayerPickUp.ins.OpQte = false;
             Invoke("QTEscesses", 0.5f);
         }
 
@@ -110,8 +115,8 @@ public class NewQTE : MonoBehaviour
             Cursor.visible = false;
             SpellWater.position = new Vector3(0, 0, 0);
             GodTable.tag = "CloQte";
+            PlayerPickUp.ins.OpQte = false;
             Player.transform.rotation = Quaternion.Lerp(Player.transform.rotation, Quaternion.Euler(20, 0, 0), 0.03f);
-            //Player.transform.rotation = Quaternion.Euler(20, 0, 0);
             Bwol.position = Vector3.Lerp(Bwol.position, NewBwolPos, 0.05f);
             Spell.position = Vector3.Lerp(Spell.position, OrigSpellPos, 0.1f);
             BowlBroken = true;
@@ -119,7 +124,7 @@ public class NewQTE : MonoBehaviour
         }
         if (GodTable.tag=="CloQte")
         {
-            PlayerPickUp.ins.OpQte = false;
+            //PlayerPickUp.ins.OpQte = false;
             Point.color = Color.clear;
             QtePoint[0].color = Color.clear;
             QtePoint[1].color = Color.clear;
@@ -143,6 +148,7 @@ public class NewQTE : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                PointCount++;
                 Fail = false;
                 Point.color = Color.yellow;//¤Ó·¥
                 randomPoint.enabled = false;
