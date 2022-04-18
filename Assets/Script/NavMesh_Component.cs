@@ -11,12 +11,14 @@ public class NavMesh_Component : MonoBehaviour
     public Transform RestartPoint;
     public Transform RestartPoint2;
     public Transform RestartPoint3;
-
     public GameObject player;
-    public Transform Monster2;
-    public Transform Monster3;
+    public GameObject Monster2;
+    public GameObject Monster3;
+    public NavMeshAgent Monster2Nav;
+    public NavMeshAgent Monster3Nav;
     public bool Reset;
-
+    public bool Level02;
+    public bool Level03;
     private void Awake()
     {
         ins = this;
@@ -28,6 +30,14 @@ public class NavMesh_Component : MonoBehaviour
         MusicManager.ins.Monster_player.clip = MusicManager.ins.Monster_clip[0];
         MusicManager.ins.Monster_player.Play();
         Reset = false;
+        if (Level02)
+        {
+            Monster2.SetActive(true);
+        }
+        if (Level03)
+        {
+            Monster3.SetActive(true);
+        }
     }
     private void FixedUpdate()
     {
@@ -43,12 +53,24 @@ public class NavMesh_Component : MonoBehaviour
             Invoke("restart", 4.5f);
             Reset = true;
             MusicManager.ins.Monsterr_player.Pause();
-            MusicManager.ins.Monster_player.Pause();
-            MusicManager.ins.Monsterr_player.Pause();
+            if (Level02)
+            {
+                MusicManager.ins.Monster_player.Pause();
+            }
+            if (Level03)
+            {
+                MusicManager.ins.Monsterr_player.Pause();
+            }
 
             agent.speed = 0;
-            enemy_ai2.ins.agent.speed = 0;
-            enemy_ai3.ins.agent.speed = 0;
+            if (Level02)
+            {
+                enemy_ai2.ins.agent.speed = 0;
+            }
+            if (Level03)
+            {
+                enemy_ai3.ins.agent.speed = 0;
+            }
         }
 
         if (col.collider.tag=="Wood")
@@ -61,16 +83,31 @@ public class NavMesh_Component : MonoBehaviour
         if (Reset)
         {
             gameObject.SetActive(false);
-            transform.position = RestartPoint.position;
-            Monster2.position = RestartPoint2.position;
-            Monster3.position = RestartPoint3.position;
+            agent.Warp(RestartPoint.position);
+            if (Level02)
+            {
+                Monster2Nav.Warp(RestartPoint2.position);
+            }
+            if (Level03)
+            {
+                Monster3Nav.Warp(RestartPoint3.position);
+            }
+            
+            /*Monster2.position = RestartPoint2.position;
+            Monster3.position = RestartPoint3.position;*/
         }
         Reset = false;
 
-        MusicManager.ins.Monsterr_player.clip = MusicManager.ins.Monster_clip[0];
-        MusicManager.ins.Monsterr_player.Play();
-        MusicManager.ins.Monsterrr_player.clip = MusicManager.ins.Monster_clip[0];
-        MusicManager.ins.Monsterrr_player.Play();
+        if (Level02)
+        {
+            MusicManager.ins.Monsterr_player.clip = MusicManager.ins.Monster_clip[0];
+            MusicManager.ins.Monsterr_player.Play();
+        }
+        if (Level03)
+        {
+            MusicManager.ins.Monsterrr_player.clip = MusicManager.ins.Monster_clip[0];
+            MusicManager.ins.Monsterrr_player.Play();
+        }
         MusicManager.ins.Monster_player.clip = MusicManager.ins.Monster_clip[0];
         MusicManager.ins.Monster_player.Play();
         gameObject.SetActive(true);

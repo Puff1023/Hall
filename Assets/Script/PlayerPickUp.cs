@@ -22,8 +22,8 @@ public class PlayerPickUp : MonoBehaviour
     public Transform PlayerOpenQtPos;
     public Transform Monster01DoorPos;
     public Vector3 NewMonster1NavPos;
-    Vector3 newRule1Pos = new Vector3(7.5f, 2.16f, 7.95f);
-    Vector3 originalRulePos = new Vector3(7f, 2.16f, 7.95f);
+    public Vector3 newRule1Pos;
+    public Vector3 originalRulePos;
     private void Awake()
     {
         ins = this;
@@ -118,7 +118,7 @@ public class PlayerPickUp : MonoBehaviour
     {
         Rule11 = false;
         Rule1.transform.position = Vector3.Lerp(Rule1.transform.position, originalRulePos, 0.1f);
-        Rule1.transform.rotation = Quaternion.Lerp(Rule1.transform.rotation, Quaternion.Euler(0, 90, 90), 0.05f);
+        Rule1.transform.rotation = Quaternion.Lerp(Rule1.transform.rotation, Quaternion.Euler(0, 90, 0), 0.05f);
         PlayerMovement.ins.speed = 5;
         LookatCamera.ins.CamLookAt = false;
     }

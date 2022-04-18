@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        controller = GetComponent<CharacterController>();
         //Music_manager.ins.PlayerBGM();
     }
 

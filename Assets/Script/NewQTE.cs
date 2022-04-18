@@ -34,7 +34,8 @@ public class NewQTE : MonoBehaviour
     public bool PlayQTE;
     Vector3 NewBwolPos = new Vector3(17.8f, 2.73f, 72.2f);
     Vector3 OrigSpellPos = new Vector3(17.6f, 1.6f, 72.8f);
-    Vector3 OrigPlayerPos = new Vector3(18, 0, 66.5f);
+    
+    public Vector3 OrigPlayerPos; 
     public GameObject Monster1Nav;
     private void Awake()
     {
@@ -99,6 +100,7 @@ public class NewQTE : MonoBehaviour
             GodTable.tag = "CloQte";
             PlayerPickUp.ins.OpQte = false;
             Invoke("QTEscesses", 0.5f);
+
         }
 
         if (Fail == true)

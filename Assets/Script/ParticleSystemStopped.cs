@@ -14,6 +14,7 @@ public class ParticleSystemStopped : MonoBehaviour
     public Transform Player;
     public Transform CmCamera;
     public NewQTE QteScript;
+    public Vector3 PlayerScessesQt;
     //public Light ElvaLight;
     public void OnParticleSystemStopped()
     {
@@ -21,6 +22,8 @@ public class ParticleSystemStopped : MonoBehaviour
         SpellBurning.SetBool("SpellBurning", false);
         Spell.position = new Vector3(0, 0, 0);//符咒消失
         WaterScript.enabled = true;//換符水貼圖
+        Player.position = PlayerScessesQt;
+        Player.rotation = Quaternion.Euler(0, 0, 0);
         StartCoroutine("Bwol");
     }
 
@@ -43,9 +46,8 @@ public class ParticleSystemStopped : MonoBehaviour
         yield return new WaitForSeconds(7f);
         PlayerMovement.ins.speed = 5;
         MouseLook.ins.MouseMoving = true;
+        Player.rotation = Quaternion.Euler(0, -75, 0);
         Quasi_Heart.color = Color.white;
-        Player.position = new Vector3(18, 0, 71);
-        Player.rotation = Quaternion.Euler(0, 0, 0);
         //CmCamera.transform.rotation = Quaternion.Euler(0, -90, 0);
         BowlAni.enabled = false;
         WaterAni.enabled = false;

@@ -67,8 +67,15 @@ public class Health : MonoBehaviour
             Hp.color = Color.Lerp(Hp.color, Color.white, Time.deltaTime * fadeSpeed * 0.5f);
             HpRing.color = Color.Lerp(HpRing.color, Color.white, Time.deltaTime * fadeSpeed * 0.5f);
             NavMesh_Component.ins.agent.speed = 0;
-            enemy_ai2.ins.agent.speed = 0;
-            enemy_ai3.ins.agent.speed = 0;
+            if (NavMesh_Component.ins.Level02==true)
+            {
+                enemy_ai2.ins.agent.speed = 0;
+            }
+            if (NavMesh_Component.ins.Level03 == true)
+            {
+                enemy_ai3.ins.agent.speed = 0;
+            }
+            
             Ray_Pick.ins.WoodCheck = false;
             Ray_Pick.ins.GodDoorCheck = false;
             HeartEffect.SetActive(true);
@@ -119,8 +126,14 @@ public class Health : MonoBehaviour
                 Quasi_Heart.color = Color.white;
                 PlayerMovement.ins.speed = 5;
                 NavMesh_Component.ins.agent.speed = 4;
-                enemy_ai2.ins.agent.speed = 4;
-                enemy_ai3.ins.agent.speed = 4;
+                if (NavMesh_Component.ins.Level02 == true)
+                {
+                    enemy_ai2.ins.agent.speed = 4;
+                }
+                if (NavMesh_Component.ins.Level03 == true)
+                {
+                    enemy_ai3.ins.agent.speed = 4;
+                }
 
                 MusicManager.ins.Heart_player.clip = MusicManager.ins.Heart_clip[0];
                 MusicManager.ins.Heart_player.Pause();
@@ -142,8 +155,14 @@ public class Health : MonoBehaviour
             MouseLook.ins.MouseMoving = false;
             PlayerMovement.ins.speed = 0;
             NavMesh_Component.ins.agent.speed = 0;
-            enemy_ai2.ins.agent.speed = 0;
-            enemy_ai3.ins.agent.speed = 0;
+            if (NavMesh_Component.ins.Level02 == true)
+            {
+                enemy_ai2.ins.agent.speed = 0;
+            }
+            if (NavMesh_Component.ins.Level03 == true)
+            {
+                enemy_ai3.ins.agent.speed = 0;
+            }
             MusicManager.ins.BGM_player.Pause();
             MusicManager.ins.Monster_player.Pause();
             MusicManager.ins.Monsterr_player.Pause();
