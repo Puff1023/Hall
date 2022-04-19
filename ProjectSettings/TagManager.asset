@@ -33,6 +33,7 @@ TagManager:
   - NotPoint
   - NotPlayer
   - NotVilla
+  - PlayerOriginal
   layers:
   - Default
   - TransparentFX

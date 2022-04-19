@@ -21,10 +21,9 @@ public class Ray_Pick : MonoBehaviour
     public Image MouseBar;
     public GameObject MouseMoveBar;
     public GameObject player;
-    //public GameObject CheckMouse;
     public GameObject LookCheck;
     public GameObject MouseLookScript;
-    public GameObject YouCanGo;
+    public Text MouseSetting;
     public Animator WoodTrigger;
     public bool WoodCheck;
     public bool GodDoorCheck;
@@ -62,7 +61,7 @@ public class Ray_Pick : MonoBehaviour
     {
         if (MouseBarPlus == true)//還要修
         {
-            MouseBar.fillAmount += 0.005f;
+            MouseBar.fillAmount += 0.008f;
 
             if (MouseBar.fillAmount >= 0.99f)
             {
@@ -71,8 +70,7 @@ public class Ray_Pick : MonoBehaviour
                 MouseLook.ins.MouseMovingChang = false;
                 PlayerMovement.ins.speed = 5;
                 MouseMoveBar.SetActive(false);
-                YouCanGo.SetActive(true);
-                //CheckMouse.SetActive(false);
+                MouseSetting.color = Color.white;
                 Invoke("ppp", 3);
             }
         }
@@ -223,7 +221,7 @@ public class Ray_Pick : MonoBehaviour
     {
         LookCheck.SetActive(false);
         MouseBarPlus = false;
-        YouCanGo.SetActive(false);
+        MouseSetting.color = Color.clear;
         MouseBar.fillAmount = 0;
         PlayerMovement.ins.speed = 5;
         MouseLookScript.GetComponent<MouseLook>().enabled = true;

@@ -26,7 +26,7 @@ public class PlayerMovement_Scenes01 : MonoBehaviour
 
     private void Start()
     {
-        //Music_manager.ins.PlayerBGM();
+        MusicManager_Scenes01.ins.PlayerBGM();
     }
 
     // Update is called once per frame
@@ -44,7 +44,7 @@ public class PlayerMovement_Scenes01 : MonoBehaviour
 
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
-            //MusicManager.ins.PlayFootStep();
+            MusicManager_Scenes01.ins.PlayFootStep();
             //if (Input.GetKey(KeyCode.LeftShift))
             //{
             //    speed = 8;
@@ -62,7 +62,7 @@ public class PlayerMovement_Scenes01 : MonoBehaviour
         }
         else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
         {
-           //MusicManager.ins.StopFootStep();
+            MusicManager_Scenes01.ins.StopFootStep();
         }
 
         

@@ -43,6 +43,8 @@ public class NewQTE : MonoBehaviour
     }
     public void Update()
     {
+        Debug.Log(Player.transform.position);
+        
         if (PlayQTE)
         {
             /*if (Input.GetKeyDown(KeyCode.Space))
@@ -203,8 +205,8 @@ public class NewQTE : MonoBehaviour
 
     public void PlayerBack()
     {
+        
         Quasi_Heart.color = Color.white;
-        Player.transform.position = OrigPlayerPos;
         Player.transform.rotation = Quaternion.Euler(0, 90, 0);
         MusicManager.ins.DoorEffect_player.clip = MusicManager.ins.DoorEffect_clip[0];
         MusicManager.ins.DoorEffect_player.Play();
@@ -214,5 +216,7 @@ public class NewQTE : MonoBehaviour
         GodDoor.SetBool("OpenDoor", true);
         GodDoor.SetBool("CloDoor", false);
         Bwol.position = new Vector3(0, 0, 0);
+        Player.transform.position = OrigPlayerPos;
+        
     }
 }

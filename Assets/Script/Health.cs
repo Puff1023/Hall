@@ -29,9 +29,10 @@ public class Health : MonoBehaviour
     public Animator HeartEffectAni;//心臟特效(放最大的那顆)
     public Animator HeartAni;//實心的心臟
     public Animator HeartRingAni;//心臟線條
-
     public Animation Gameover;
+    public Text MouseCheckOver;
     public bool condition;
+    public bool MouseCheck = false;
     private void Awake()
     {
         ins = this;
@@ -143,6 +144,11 @@ public class Health : MonoBehaviour
                 HeartEffectAni.enabled = false;
                 HeartAni.enabled = false;
                 HeartRingAni.enabled = false;
+                if (MouseCheck)
+                {
+                    MouseCheckOver.color = Color.white;
+                    StartCoroutine("MouseCheckTextEnd");
+                }
             }
         }
 
@@ -193,5 +199,10 @@ public class Health : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         FadeOut = true;
+    }
+    IEnumerator MouseCheckTextEnd()
+    {
+        yield return new WaitForSeconds(3);
+        MouseCheckOver.color = Color.clear;
     }
 }

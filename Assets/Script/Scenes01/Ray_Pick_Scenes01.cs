@@ -19,9 +19,37 @@ public class Ray_Pick_Scenes01 : MonoBehaviour
     public Image Black;
     public float fadeSpeed;
     public float Speed = 1;
+    bool CanopDoor = false;
+
     private void Awake()
     {
         ins = this;
+    }
+
+    private void Update()
+    {
+        if (CanopDoor)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Debug.Log("音效咧?");
+                MusicManager_Scenes01.ins.VillaDoor_player.clip = MusicManager_Scenes01.ins.VillaDoor_clip[0];
+                MusicManager_Scenes01.ins.VillaDoor_player.Play();
+            }
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                Debug.Log("音效啦");
+                MusicManager_Scenes01.ins.VillaDoor_player.clip = MusicManager_Scenes01.ins.VillaDoor_clip[0];
+                MusicManager_Scenes01.ins.VillaDoor_player.Pause();
+            }
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                //Debug.Log("OpenDoor");
+                //print("y角度為：" + RightDoor.transform.localEulerAngles.y);
+                RightDoor.rotation = Quaternion.Lerp(RightDoor.rotation, Quaternion.Euler(0, -70, 0), 0.01f);
+                LeftDoor.rotation = Quaternion.Lerp(LeftDoor.rotation, Quaternion.Euler(0, 70, 0), 0.01f);
+            }
+        }
     }
 
     void FixedUpdate()
@@ -41,29 +69,28 @@ public class Ray_Pick_Scenes01 : MonoBehaviour
                 UI.SetActive(true);
                 Right.OutlineWidth = 6;
                 Left.OutlineWidth = 6;
-                if (Input.GetKey(KeyCode.Mouse0))
-                {
-                    //Debug.Log("OpenDoor");
-                    //print("y角度為：" + RightDoor.transform.localEulerAngles.y);
-                    RightDoor.rotation = Quaternion.Lerp(RightDoor.rotation, Quaternion.Euler(0, -70, 0), 0.01f);
-                    LeftDoor.rotation = Quaternion.Lerp(LeftDoor.rotation, Quaternion.Euler(0, 70, 0), 0.01f);
-                }
+                CanopDoor = true;
+                
             }
             else
             {
                 UI.SetActive(false);
                 Right.OutlineWidth = 0;
                 Left.OutlineWidth = 0;
+                CanopDoor = false;
             }
 
             if (RightDoor.localEulerAngles.y >= 50)//轉場道關卡1
             {
                 hit.transform.tag = "NotVilla";
                 Black.color = Color.Lerp(Black.color, Color.black, Time.deltaTime * fadeSpeed * 0.5f);
-                
                 if (Black.color.a>=0.95f)
                 {
                     SceneManager.LoadScene(2);//關卡1
+                    MusicManager_Scenes01.ins.ChangScenes_player.clip = MusicManager_Scenes01.ins.ChangScenes_clip[0];
+                    MusicManager_Scenes01.ins.ChangScenes_player.Play();
+                    MusicManager_Scenes01.ins.VillaDoor_player.clip = MusicManager_Scenes01.ins.VillaDoor_clip[0];
+                    MusicManager_Scenes01.ins.VillaDoor_player.Stop();
                 }
             }
         }    

@@ -24,6 +24,7 @@ public class PlayerPickUp : MonoBehaviour
     public Vector3 NewMonster1NavPos;
     public Vector3 newRule1Pos;
     public Vector3 originalRulePos;
+
     private void Awake()
     {
         ins = this;
@@ -68,8 +69,9 @@ public class PlayerPickUp : MonoBehaviour
             Cursor.visible = true;
             Quasi_Heart.color = Color.clear;
             CmCamera.transform.rotation = Quaternion.Euler(30, 0, 0);
-            Monster1Nav.Warp(NewMonster1NavPos); 
-            transform.position = Vector3.Lerp(transform.position, PlayerOpenQtPos.position, 0.1f);
+            Monster1Nav.Warp(NewMonster1NavPos);
+            //transform.position = Vector3.Lerp(transform.position, PlayerOpenQtPos.position, 0.1f);
+            transform.position = PlayerOpenQtPos.position;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(30, 0, 0), 0.05f);
             PlayerMovement.ins.speed = 0;
             MouseLook.ins.MouseMoving = false;
@@ -111,6 +113,10 @@ public class PlayerPickUp : MonoBehaviour
             MusicManager.ins.BGM_player.clip = MusicManager.ins.BGM_clip[0];
             MusicManager.ins.BGM_player.Pause();
             StartCoroutine("CloSlow");
+        }
+        if (other.tag=="PlayerOriginal")
+        {
+            Health.ins.MouseCheck = true;
         }
     }
 
