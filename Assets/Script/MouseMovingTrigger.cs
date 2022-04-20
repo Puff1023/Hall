@@ -10,7 +10,7 @@ public class MouseMovingTrigger : MonoBehaviour
     public Transform original;
     public Image MiniMap;
     public Image MiniMapMask;
-
+    public Vector3 PlayerOriginal;
     private void OnTriggerStay(Collider other)
     {
         if (other.tag=="Player")
@@ -25,7 +25,7 @@ public class MouseMovingTrigger : MonoBehaviour
             if (NewQTE.ins.Fail==false)
             {
                 StartCoroutine("GoBack");
-                original.position = new Vector3(-30.8f, 0, -36);
+                original.position = PlayerOriginal;
                 PlayerMovement.ins.speed = 0;
                 MouseLook.ins.MouseMoving = false;
             }

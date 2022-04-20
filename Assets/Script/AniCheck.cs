@@ -7,6 +7,7 @@ public class AniCheck: MonoBehaviour
 {
     public Animator Wood;
     public Transform PlayerOriginal;
+    public Vector3 PlayerOriginalPos;
     bool CheckAni=true;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class AniCheck: MonoBehaviour
             {
                 Debug.Log("дькOп}");
                 NavMesh_Component.ins.agent.speed = 4;
-                PlayerOriginal.position = new Vector3(-30.8f, 0, -36);
+                PlayerOriginal.position = PlayerOriginalPos;
                 CheckAni = false;
             }
             else

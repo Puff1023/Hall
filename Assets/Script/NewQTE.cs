@@ -27,8 +27,8 @@ public class NewQTE : MonoBehaviour
     public Animator SpellBurning;
     public Transform Bwol;
     public Transform Spell;
-    public Transform Monster1;
-    public Transform Monster01DoorPos;
+    //public Transform Monster1;
+    //public Transform Monster01DoorPos;
     public bool Burning;
     public bool BowlBroken;
     public bool PlayQTE;

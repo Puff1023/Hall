@@ -12,6 +12,7 @@ public class RestartTrigger : MonoBehaviour
     public GameObject LookCheck;
     public Camera CameraSize;//小地圖視野範圍
     public Animator WoodTrigger;
+    public Vector3 SpellOriginal;
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag=="Player")
@@ -21,7 +22,7 @@ public class RestartTrigger : MonoBehaviour
             GodDoor.SetBool("CloDoor", true);
             FadeInOut.ins.Qte = false;
             Fade.enabled = false;
-            Spell.position = new Vector3(42.3f, 1.7f, -19.7f);
+            Spell.position = SpellOriginal;// new Vector3(42.3f, 1.7f, -19.7f);
             Spell.tag = "Qte";
             Trigger.enabled = true;
             NewQTE.ins.Fail = false;

@@ -122,15 +122,19 @@ public class enemy_ai2 : MonoBehaviour
             Reset = true;
             if (Level2)
             {
-                MusicManager.ins.Monsterr_player.Pause();
+                MusicManager.ins.Monsterr_player.Pause(); enemy_ai3.ins.agent.speed = 0;
             }
-            MusicManager.ins.Monsterrr_player.Pause();
-            MusicManager.ins.Monster_player.Pause();
+            if (Level3)
+            {
+                MusicManager.ins.Monsterrr_player.Pause();
+                enemy_ai3.ins.agent.speed = 0;
+            }
             
+            MusicManager.ins.Monster_player.Pause();
 
-            agent.speed = 0;
-            NavMesh_Component.ins.agent.speed = 0;
             enemy_ai3.ins.agent.speed = 0;
+            NavMesh_Component.ins.agent.speed = 0;
+            
         }
 
         if (col.collider.tag == "Wood")
