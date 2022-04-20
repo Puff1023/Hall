@@ -44,13 +44,6 @@ public class MonsterTrigger : MonoBehaviour
             Debug.Log("¸I¨ì¤F");
         }
 
-        if (other.tag=="Point")
-
-        {
-            FadeOut = false;
-            MonsterMat.color = Color.white;
-        }
-
         if (other.tag == "NotPlayer")
         {
             MonsterAni.enabled = true;
@@ -66,6 +59,15 @@ public class MonsterTrigger : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Point")
+
+        {
+            FadeOut = false;
+            MonsterMat.color = Color.white;
+        }
+    }
     void TriggerCount()
     {
         MonsterLose = true;

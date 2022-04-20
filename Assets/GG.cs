@@ -8,7 +8,7 @@ public class GG : MonoBehaviour
     // Start is called before the first frame update
    public void Restart()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("Game2");
         Time.timeScale = 1;
     }
 

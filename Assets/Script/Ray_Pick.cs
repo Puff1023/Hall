@@ -61,7 +61,7 @@ public class Ray_Pick : MonoBehaviour
     {
         if (MouseBarPlus == true)//還要修
         {
-            MouseBar.fillAmount += 0.008f;
+            MouseBar.fillAmount += 0.005f;
 
             if (MouseBar.fillAmount >= 0.99f)
             {

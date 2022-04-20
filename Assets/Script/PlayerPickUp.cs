@@ -70,8 +70,8 @@ public class PlayerPickUp : MonoBehaviour
             Quasi_Heart.color = Color.clear;
             CmCamera.transform.rotation = Quaternion.Euler(30, 0, 0);
             Monster1Nav.Warp(NewMonster1NavPos);
-            //transform.position = Vector3.Lerp(transform.position, PlayerOpenQtPos.position, 0.1f);
-            transform.position = PlayerOpenQtPos.position;
+            transform.position = Vector3.Lerp(transform.position, PlayerOpenQtPos.position, 0.1f);
+            //transform.position = PlayerOpenQtPos.position;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(30, 0, 0), 0.05f);
             PlayerMovement.ins.speed = 0;
             MouseLook.ins.MouseMoving = false;

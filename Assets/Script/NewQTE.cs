@@ -32,9 +32,8 @@ public class NewQTE : MonoBehaviour
     public bool Burning;
     public bool BowlBroken;
     public bool PlayQTE;
-    Vector3 NewBwolPos = new Vector3(17.8f, 2.73f, 72.2f);
-    Vector3 OrigSpellPos = new Vector3(17.6f, 1.6f, 72.8f);
-    
+    public Vector3 NewBwolPos;
+    public Vector3 OrigSpellPos;
     public Vector3 OrigPlayerPos; 
     public GameObject Monster1Nav;
     private void Awake()
@@ -200,12 +199,12 @@ public class NewQTE : MonoBehaviour
         Bowl.SetBool("BowlBroken", true);
         MusicManager.ins.BwolBroken_player.clip = MusicManager.ins.BwolBroken_clip[0];
         MusicManager.ins.BwolBroken_player.Play();
-        Invoke("PlayerBack", 2.5f);
+        StartCoroutine("PlayerBack");
     }
 
-    public void PlayerBack()
+    IEnumerator PlayerBack()
     {
-        
+        yield return new WaitForSeconds(2.5f);
         Quasi_Heart.color = Color.white;
         Player.transform.rotation = Quaternion.Euler(0, 90, 0);
         MusicManager.ins.DoorEffect_player.clip = MusicManager.ins.DoorEffect_clip[0];
