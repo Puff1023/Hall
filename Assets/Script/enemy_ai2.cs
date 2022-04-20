@@ -29,6 +29,8 @@ public class enemy_ai2 : MonoBehaviour
     public Transform Monster1;
     public Transform Monster3;
     public bool StopMove;
+    public bool Level2;
+    public bool Level3;
     private void Awake()
     {
         ins = this;
@@ -118,9 +120,13 @@ public class enemy_ai2 : MonoBehaviour
         {
             Invoke("restart", 3.5f);
             Reset = true;
+            if (Level2)
+            {
+                MusicManager.ins.Monsterr_player.Pause();
+            }
             MusicManager.ins.Monsterrr_player.Pause();
             MusicManager.ins.Monster_player.Pause();
-            MusicManager.ins.Monsterr_player.Pause();
+            
 
             agent.speed = 0;
             NavMesh_Component.ins.agent.speed = 0;

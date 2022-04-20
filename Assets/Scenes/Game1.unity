@@ -998,7 +998,9 @@ MonoBehaviour:
   HeartAni: {fileID: 328590738}
   HeartRingAni: {fileID: 1845549752}
   Gameover: {fileID: 1024261043}
+  MouseCheckOver: {fileID: 0}
   condition: 0
+  MouseCheck: 0
 --- !u!114 &139164608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3391,7 +3393,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 439254039}
   speed: 0
-  gravity: -9.81
 --- !u!1 &452828700
 GameObject:
   m_ObjectHideFlags: 0
@@ -5547,6 +5548,7 @@ MonoBehaviour:
   QTE_player: {fileID: 1940310886}
   QteScesse_player: {fileID: 1472304004}
   QteFail_player: {fileID: 873645127}
+  LampBreak_player: {fileID: 0}
   BGM_clip:
   - {fileID: 8300000, guid: dd25c6e49903516428d234390632fb6d, type: 3}
   DoorEffect_clip:
@@ -5582,6 +5584,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: beaf66ebc0d52a7479be10c207f74906, type: 3}
   - {fileID: 8300000, guid: f028987887bb7b0478313b70f8f5a135, type: 3}
   - {fileID: 8300000, guid: 44f190ba99bb9894dbc0a3a4ceff5e95, type: 3}
+  LampBreak_clip: []
 --- !u!4 &842432736
 Transform:
   m_ObjectHideFlags: 0
@@ -11306,6 +11309,7 @@ MonoBehaviour:
   Player: {fileID: 543450653460714448}
   CmCamera: {fileID: 1505326566}
   QteScript: {fileID: 0}
+  PlayerScessesQt: {x: 0, y: 0, z: 0}
 --- !u!1 &1452237391 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2549101277516255906, guid: 0212cf093a628b141959caf68413ee5e, type: 3}
@@ -12583,7 +12587,7 @@ MonoBehaviour:
   player: {fileID: 919132149268515178}
   LookCheck: {fileID: 1067238674}
   MouseLookScript: {fileID: 1505326565}
-  YouCanGo: {fileID: 1324819101}
+  MouseSetting: {fileID: 0}
   WoodTrigger: {fileID: 1486153360}
   WoodCheck: 1
   GodDoorCheck: 1
@@ -43489,9 +43493,13 @@ MonoBehaviour:
   RestartPoint2: {fileID: 1615549805}
   RestartPoint3: {fileID: 968538149}
   player: {fileID: 919132149268515178}
-  Monster2: {fileID: 1826578311}
-  Monster3: {fileID: 961628119}
+  Monster2: {fileID: 1826578312}
+  Monster3: {fileID: 961628118}
+  Monster2Nav: {fileID: 1826578314}
+  Monster3Nav: {fileID: 961628121}
   Reset: 0
+  Level02: 0
+  Level03: 0
 --- !u!65 &919132149403131792
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43692,7 +43700,11 @@ MonoBehaviour:
   player: {fileID: 919132149268515178}
   Monster2: {fileID: 1791096435}
   Monster3: {fileID: 1484441132}
+  Monster2Nav: {fileID: 0}
+  Monster3Nav: {fileID: 0}
   Reset: 0
+  Level02: 0
+  Level03: 0
 --- !u!195 &1209844049345266021
 NavMeshAgent:
   m_ObjectHideFlags: 0
