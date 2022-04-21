@@ -120,21 +120,15 @@ public class enemy_ai2 : MonoBehaviour
         {
             Invoke("restart", 3.5f);
             Reset = true;
-            if (Level2)
-            {
-                MusicManager.ins.Monsterr_player.Pause(); enemy_ai3.ins.agent.speed = 0;
-            }
+            MusicManager.ins.Monsterr_player.Pause();
+            agent.speed = 0;
             if (Level3)
             {
                 MusicManager.ins.Monsterrr_player.Pause();
                 enemy_ai3.ins.agent.speed = 0;
             }
-            
-            MusicManager.ins.Monster_player.Pause();
-
-            enemy_ai3.ins.agent.speed = 0;
             NavMesh_Component.ins.agent.speed = 0;
-            
+            MusicManager.ins.Monster_player.Pause();
         }
 
         if (col.collider.tag == "Wood")
@@ -150,14 +144,21 @@ public class enemy_ai2 : MonoBehaviour
             gameObject.SetActive(false);
             transform.position = RestartPoint.position;
             Monster1.position = RestartPoint1.position;
-            Monster3.position = RestartPoint3.position;
+            if (Level3)
+            {
+                Monster3.position = RestartPoint3.position;
+            }
+            
         }
         Reset = false;
 
         MusicManager.ins.Monsterr_player.clip = MusicManager.ins.Monster_clip[0];
         MusicManager.ins.Monsterr_player.Play();
-        MusicManager.ins.Monsterrr_player.clip = MusicManager.ins.Monster_clip[0];
-        MusicManager.ins.Monsterrr_player.Play();
+        if (Level3)
+        {
+            MusicManager.ins.Monsterrr_player.clip = MusicManager.ins.Monster_clip[0];
+            MusicManager.ins.Monsterrr_player.Play();
+        }
         MusicManager.ins.Monster_player.clip = MusicManager.ins.Monster_clip[0];
         MusicManager.ins.Monster_player.Play();
         gameObject.SetActive(true);

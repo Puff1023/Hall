@@ -22,16 +22,16 @@ public class MouseMovingTrigger : MonoBehaviour
 
         if (other.tag=="Monster")
         {
-            if (NewQTE.ins.Fail==false)
-            {
+            //if (NewQTE.ins.Fail==false)
+            //{
                 StartCoroutine("GoBack");
                 original.position = PlayerOriginal;
                 PlayerMovement.ins.speed = 0;
                 MouseLook.ins.MouseMoving = false;
-            }
+            //}
         }
+
     }
-    
 
     IEnumerator GoBack()
     {

@@ -8,12 +8,13 @@ public class Trigger : MonoBehaviour
     public Animator LampBreak;
     public Light Lamp;
     public Vector3 NewTrigger;
+    public Vector3 NewEntrance;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
             Debug.Log("¤J¤f°ô¦í+¿O¯}");
-            Entrance.position = new Vector3(-92.85992f, 0, -25.13997f);
+            Entrance.position = NewEntrance;
             LampBreak.enabled = true;
             Lamp.intensity = 0;
             MusicManager.ins.LampBreak_player.clip = MusicManager.ins.LampBreak_clip[0];

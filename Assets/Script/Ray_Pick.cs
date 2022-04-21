@@ -28,7 +28,6 @@ public class Ray_Pick : MonoBehaviour
     public bool WoodCheck;
     public bool GodDoorCheck;
     public bool MouseBarPlus;//固定視角Bar條
-
     public bool condition;
     public bool condition2;
     public GameObject BGMSlider;

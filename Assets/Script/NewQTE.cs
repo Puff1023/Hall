@@ -36,20 +36,15 @@ public class NewQTE : MonoBehaviour
     public Vector3 OrigSpellPos;
     public Vector3 OrigPlayerPos; 
     public GameObject Monster1Nav;
+    public CharacterController PlayerController;
     private void Awake()
     {
         ins = this;
     }
     public void Update()
     {
-        Debug.Log(Player.transform.position);
-        
         if (PlayQTE)
         {
-            /*if (Input.GetKeyDown(KeyCode.Space))
-            {
-                PointCount++;
-            }*/
             if (PointCount <= 0)
             {
                 QtePoint[0].color = Color.grey;
@@ -209,13 +204,13 @@ public class NewQTE : MonoBehaviour
         Player.transform.rotation = Quaternion.Euler(0, 90, 0);
         MusicManager.ins.DoorEffect_player.clip = MusicManager.ins.DoorEffect_clip[0];
         MusicManager.ins.DoorEffect_player.Play();
-        PlayerMovement.ins.speed = 5;
+        //PlayerMovement.ins.speed = 5;
+        PlayerController.enabled = true;
         NavMesh_Component.ins.agent.speed = 4;
-        MouseLook.ins.MouseMoving = true;
+        //MouseLook.ins.MouseMoving = true;
         GodDoor.SetBool("OpenDoor", true);
         GodDoor.SetBool("CloDoor", false);
         Bwol.position = new Vector3(0, 0, 0);
         Player.transform.position = OrigPlayerPos;
-        
     }
 }

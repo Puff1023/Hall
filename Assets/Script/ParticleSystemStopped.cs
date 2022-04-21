@@ -15,7 +15,8 @@ public class ParticleSystemStopped : MonoBehaviour
     public Transform CmCamera;
     public NewQTE QteScript;
     public Vector3 PlayerScessesQt;
-    //public Light ElvaLight;
+    public Light ElvaLight;
+    public CharacterController PlayerController;
     public void OnParticleSystemStopped()
     {
         QteScript.enabled = false;
@@ -45,6 +46,7 @@ public class ParticleSystemStopped : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         PlayerMovement.ins.speed = 5;
+        PlayerController.enabled = true;
         MouseLook.ins.MouseMoving = true;
         Player.rotation = Quaternion.Euler(0, -75, 0);
         Quasi_Heart.color = Color.white;
@@ -56,7 +58,7 @@ public class ParticleSystemStopped : MonoBehaviour
         MusicManager.ins.ElvaLight_player.Play();
         MusicManager.ins.KnockDoor_player.clip = MusicManager.ins.KnockDoor_clip[0];
         MusicManager.ins.KnockDoor_player.Pause();
-        //ElvaLight.intensity = 3;
+        ElvaLight.intensity = 2;
         Debug.Log("Exit");
     }
 }

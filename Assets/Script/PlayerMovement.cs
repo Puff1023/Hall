@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
     
     //public GameObject FootStep;
     public CharacterController controller;
-
-    public float speed;      //移動速度
+    public float speed;
+    
     //public float gravity = -9.81f; //重力
     //public float jumpHeight = 3f;  //跳的高度
 

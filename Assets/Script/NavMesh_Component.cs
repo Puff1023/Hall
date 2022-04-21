@@ -92,9 +92,6 @@ public class NavMesh_Component : MonoBehaviour
             {
                 Monster3Nav.Warp(RestartPoint3.position);
             }
-            
-            /*Monster2.position = RestartPoint2.position;
-            Monster3.position = RestartPoint3.position;*/
         }
         Reset = false;
 

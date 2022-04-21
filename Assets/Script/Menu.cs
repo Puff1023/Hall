@@ -37,12 +37,76 @@ public class Menu : MonoBehaviour
         StartCoroutine(LoadLevelWithBar("Scene 01"));
     }
 
+    public void Normal()
+    {
+        loadingImage.SetActive(true);
+        StartCoroutine(LoadLevelWithBar2("Game1"));
+    }
+    public void Diffculty()
+    {
+        loadingImage.SetActive(true);
+        StartCoroutine(LoadLevelWithBar3("Game2"));
+    }
     IEnumerator LoadLevelWithBar(string level)
     {
         int displayProgress = 0;
         int toProgress = 0;
 
         AsyncOperation async = SceneManager.LoadSceneAsync("Scene 01");
+        async.allowSceneActivation = false;
+        while (async.progress < 0.9f)
+        {
+            toProgress = (int)async.progress * 100;
+            while (displayProgress < toProgress)
+            {
+                displayProgress++;
+                setloading(displayProgress);
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        toProgress = 100;
+        while (displayProgress < toProgress)
+        {
+            displayProgress++;
+            setloading(displayProgress);
+            yield return new WaitForEndOfFrame();
+        }
+        async.allowSceneActivation = true;
+    }
+
+    IEnumerator LoadLevelWithBar2(string level)
+    {
+        int displayProgress = 0;
+        int toProgress = 0;
+
+        AsyncOperation async = SceneManager.LoadSceneAsync("Game1");
+        async.allowSceneActivation = false;
+        while (async.progress < 0.9f)
+        {
+            toProgress = (int)async.progress * 100;
+            while (displayProgress < toProgress)
+            {
+                displayProgress++;
+                setloading(displayProgress);
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        toProgress = 100;
+        while (displayProgress < toProgress)
+        {
+            displayProgress++;
+            setloading(displayProgress);
+            yield return new WaitForEndOfFrame();
+        }
+        async.allowSceneActivation = true;
+    }
+
+    IEnumerator LoadLevelWithBar3(string level)
+    {
+        int displayProgress = 0;
+        int toProgress = 0;
+
+        AsyncOperation async = SceneManager.LoadSceneAsync("Game2");
         async.allowSceneActivation = false;
         while (async.progress < 0.9f)
         {

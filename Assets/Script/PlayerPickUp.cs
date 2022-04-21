@@ -9,9 +9,10 @@ public class PlayerPickUp : MonoBehaviour
     public static PlayerPickUp ins;
     public Camera CameraSize;//小地圖視野範圍
     public int count; //油燈數量
-    public GameObject Rule1;
+    public Transform[] Ruler;
+    /*public GameObject Rule1;
     public GameObject Rule2;
-    public GameObject Rule3;
+    public GameObject Rule3;*/
     public NavMeshAgent Monster1Nav;
     public Image Quasi_Heart;
     public Image MiniMap;
@@ -21,9 +22,14 @@ public class PlayerPickUp : MonoBehaviour
     public Transform CmCamera;
     public Transform PlayerOpenQtPos;
     public Transform Monster01DoorPos;
+    public CharacterController PlayerController;
     public Vector3 NewMonster1NavPos;
     public Vector3 newRule1Pos;
+    public Vector3 newRule2Pos;
+    public Vector3 newRule3Pos;
     public Vector3 originalRulePos;
+    public Vector3 originalRu2ePos;
+    public Vector3 originalRu3ePos;
 
     private void Awake()
     {
@@ -57,10 +63,15 @@ public class PlayerPickUp : MonoBehaviour
 
         if (Rule11==true)
         {
-            Rule1.transform.position = Vector3.Lerp(Rule1.transform.position, newRule1Pos, 0.1f);
+            Ruler[0].position = Vector3.Lerp(Ruler[0].position, newRule1Pos, 0.1f);
+            Ruler[1].position = Vector3.Lerp(Ruler[1].position, newRule2Pos, 0.1f);
+            Ruler[2].position = Vector3.Lerp(Ruler[2].position, newRule3Pos, 0.1f);
+            Ruler[0].rotation = Quaternion.Euler(0, 90, 270);
+            Ruler[1].rotation = Quaternion.Euler(0, 0, 270);
+            Ruler[2].rotation = Quaternion.Euler(0, -90, 270);
             PlayerMovement.ins.speed = 0;
             LookatCamera.ins.CamLookAt = true;
-            Invoke("qqq", 3);
+            Invoke("RulerBake", 5);
         }
 
         if (OpQte)
@@ -74,6 +85,7 @@ public class PlayerPickUp : MonoBehaviour
             //transform.position = PlayerOpenQtPos.position;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(30, 0, 0), 0.05f);
             PlayerMovement.ins.speed = 0;
+            PlayerController.enabled = false;
             MouseLook.ins.MouseMoving = false;
             NavMesh_Component.ins.agent.speed = 0;
         }
@@ -120,11 +132,16 @@ public class PlayerPickUp : MonoBehaviour
         }
     }
 
-    public void qqq()
+    public void RulerBake()
     {
         Rule11 = false;
-        Rule1.transform.position = Vector3.Lerp(Rule1.transform.position, originalRulePos, 0.1f);
-        Rule1.transform.rotation = Quaternion.Lerp(Rule1.transform.rotation, Quaternion.Euler(0, 90, 0), 0.05f);
+        Ruler[0].position = Vector3.Lerp(Ruler[0].position, originalRulePos, 0.1f);
+        Ruler[1].position = Vector3.Lerp(Ruler[1].position, originalRu2ePos, 0.1f);
+        Ruler[2].position = Vector3.Lerp(Ruler[2].position, originalRu3ePos, 0.1f);
+        //Rule1.transform.position = Vector3.Lerp(Rule1.transform.position, originalRulePos, 0.1f);
+        Ruler[0].rotation = Quaternion.Euler(0, 90, 270);
+        Ruler[1].rotation = Quaternion.Euler(0, 0, 270);
+        Ruler[2].rotation = Quaternion.Euler(0, -90, 270);
         PlayerMovement.ins.speed = 5;
         LookatCamera.ins.CamLookAt = false;
     }
